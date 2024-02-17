@@ -13,8 +13,13 @@ public class UpcomingBikes extends BasePage {
 	@FindBy(xpath = "//a[normalize-space()='New Bikes']")
 	private WebElement newBikes;
 
-	public void newBikeHover() {
+	public void newBikesHover() {
 		actions.moveToElement(newBikes).perform();
+		sleep(3000);
+	}
+
+	public void newBikesClick() {
+		newBikes.click();
 		sleep(3000);
 	}
 

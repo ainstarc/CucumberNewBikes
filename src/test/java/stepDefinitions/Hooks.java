@@ -17,7 +17,7 @@ public class Hooks {
 
 	@Before
 	public void setup() throws IOException {
-		driver = BaseClass.initilizeBrowser();
+		driver = BaseClass.initializeBrowser();
 
 		p = BaseClass.getProperties();
 		driver.get(p.getProperty("appURL"));
@@ -27,13 +27,17 @@ public class Hooks {
 
 	@After
 	public void tearDown(Scenario scenario) {
+		sleep(5000);
+		driver.quit();
+
+	}
+
+	public void sleep(long time) {
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(time);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		driver.quit();
-
 	}
 
 }

@@ -18,51 +18,11 @@ public class BaseClass {
 	static WebDriver driver;
 	static Properties p;
 
-	public static WebDriver initilizeBrowser() throws IOException {
-		if (getProperties().getProperty("execution_env").equalsIgnoreCase("remote")) {
-			DesiredCapabilities capabilities = new DesiredCapabilities();
-
-			// os
-			if (getProperties().getProperty("os").equalsIgnoreCase("windows")) {
-				capabilities.setPlatform(Platform.WIN11);
-			} else if (getProperties().getProperty("os").equalsIgnoreCase("mac")) {
-				capabilities.setPlatform(Platform.MAC);
-			} else {
-				System.out.println("No matching OS..");
-			}
-			// browser
-			switch (getProperties().getProperty("browser").toLowerCase()) {
-			case "chrome":
-				capabilities.setBrowserName("chrome");
-				break;
-			case "edge":
-				capabilities.setBrowserName("MicrosoftEdge");
-				break;
-			default:
-				System.out.println("No matching browser");
-			}
-
-			driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
-
-		} else if (getProperties().getProperty("execution_env").equalsIgnoreCase("local")) {
-			switch (getProperties().getProperty("browser").toLowerCase()) {
-			case "chrome":
-				driver = new ChromeDriver();
-				break;
-			case "edge":
-				driver = new EdgeDriver();
-				break;
-			default:
-				System.out.println("No matching browser");
-				driver = null;
-			}
-		}
+	public static WebDriver initializeBrowser() {
+		driver = new ChromeDriver();
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(5));
-
 		return driver;
-
 	}
 
 	public static WebDriver getDriver() {
