@@ -27,5 +27,19 @@ public class NewBikes {
 	public void clicked_on_new_bikes() {
 		upcomingBikes.newBikesClick();
 	}
+	
+	@When("clicked on upcoming")
+	public void clicked_on_upcoming() {
+		upcomingBikes.upcomingClick();
+	}
+	
+	@When("clicked on allUpcomingBikes")
+	public void clicked_on_all_upcoming_bikes() {
+		upcomingBikes.allUpcomingBikesClick();
+	}
 
+	@When("cliked on UpcomingBikes")
+	public void clicked_on_upcoming_bikes() {
+		upcomingBikes.upcomingBikesClick();
+	}
 }

@@ -23,4 +23,28 @@ public class UpcomingBikes extends BasePage {
 		sleep(3000);
 	}
 
+	@FindBy(xpath = "//li[text()='Upcoming']")
+	private WebElement upcoming;
+
+	@FindBy(xpath = "//a[text()='Upcoming Bikes']")
+	private WebElement allUpcomingBikes;
+
+	public void upcomingClick() {
+		upcoming.click();
+		sleep(3000);
+	}
+
+	public void allUpcomingBikesClick() {
+//		allUpcomingBikes.click();
+		jse.executeScript("arguments[0].click();", allUpcomingBikes);
+	}
+
+	@FindBy(xpath = "//span[text()='Upcoming Bikes']")
+	private WebElement upcomingBikes;
+
+	public void upcomingBikesClick() {
+		upcomingBikes.click();
+		sleep(3000);
+	}
+
 }
